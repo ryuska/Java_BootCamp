@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<div class="jumbotron">
+    <h6>Basic Bullhorn</h6>
+</div>
+</head>
+<body>
+<a href="/">Show All Messages</a><br />
+Title  :<span th:text="${message.title}" ></span><br />
+Content  :<p th:text="${message.content}" ></p>
+Posted Date  :<span th:text="${message.postedDate}" ></span><br />
+Posted By  :<span th:text="${message.postedBy}" ></span><br />
+<a th:href="@{/delete/{id} (id=${message.id})}">Delete this message</a>
+</body>
+</html>
