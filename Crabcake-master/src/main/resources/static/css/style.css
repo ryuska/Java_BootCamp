@@ -1,0 +1,18 @@
+body {
+    background-color: azure;
+    text-align: center;
+}
+h1{
+    color: indigo;
+    text-align: center;
+}
+
+p{
+    font-family: Verdana;
+    font-size: 10px;
+}
+img{
+
+    hight: 200px;
+
+}
