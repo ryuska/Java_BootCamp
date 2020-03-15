@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>All Messages</title>
+    <th:block th:insert="base :: header"></th:block>
+</head>
+<body>
+<div th:replace="base :: nav"></div>
+
+<div class="container">
+
+    Title: <span th:text="${message.title}"></span><br/>
+    Posted By: <span th:text="${message.postedBy}"></span><br/>
+    Content: <span th:text="${message.content}"></span><br/>
+    Posted Date: <span th:text="${message.postedDate}"></span><br/>
+
+    <span th:if="${user_id == message.user.id}">
+                    <a th:href="@{/delete/{id}(id=${course.id})}">Delete</a>
+        </span>
+
+</div>
+
+<div th:replace="base :: footer"></div>
+</body>
+</html>

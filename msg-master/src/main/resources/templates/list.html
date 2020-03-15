@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:insert="base :: header"></th:block>
+</head>
+<body>
+
+<div th:replace="base :: nav"></div>
+
+<div class="container">
+    <h1>Messages</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Posted Date</th>
+            <th>Posted By</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="message : ${messages}">
+            <td th:text="${message.title}"></td>
+            <td th:text="${message.content}"></td>
+            <td th:text="${message.postedDate}"></td>
+            <td th:text="${message.postedBy}"></td>
+            <td>
+                <div class="nav-item" sec:authorize="hasAuthority('USER')">
+                    <span th:if="${user_id == message.user.id}">
+                    <a th:href="@{/update/{id}(id=${message.id})}">Update</a>
+                    <a th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
+                </span>
+                    <a th:href="@{/detail/{id}(id=${message.id})}">Details</a>
+                </div>
+                <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${message.id})}">Delete Message</a>
+                    <a th:href="@{/update/{id}(id=${message.id})}">Update</a>
+                    <a th:href="@{/detail/{id}(id=${message.id})}">Details</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="base :: footer"></div>
+</body>
+</html>
